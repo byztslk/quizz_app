@@ -15,8 +15,10 @@ class QuestionsSummary extends StatelessWidget {
             (data) {
               return Row(
                 children: [
+                  //sorunun indeksini gösteren metin widgeti.
                   Text(((data['question_index'] as int) + 1).toString()),
                   Expanded(
+                    //sorunun metnini kullanıcının cevabını ve doğru cevabı gösteren widget.
                     child: Column(
                       children: [
                         Text(data['question'] as String),

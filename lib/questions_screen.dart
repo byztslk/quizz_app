@@ -9,6 +9,8 @@ class QuestionsScreen extends StatefulWidget {
     super.key,
     required this.onSelectAnswer,
   });
+
+  //kullanıcının seçtiği cevap işlenmek için fonksiyon tanımlandı.
   final void Function(String answer) onSelectAnswer;
 
   @override
@@ -20,15 +22,17 @@ class QuestionsScreen extends StatefulWidget {
 class _QuestionsScreenState extends State<QuestionsScreen> {
   int currentQuestionIndex = 0;
 
+//answerQuestion fonksiyonu , kullanıcın seçtiği cevabı işler ve sonraki soruya geçer.
   void answerQuestion(String selectedAnswer) {
     widget.onSelectAnswer(selectedAnswer);
     setState(() {
-      currentQuestionIndex++; //increments the value by
+      currentQuestionIndex++; // değerini 1 arttırır.
     });
   }
 
   @override
   Widget build(context) {
+    //mevcut soru
     QuizQuestions currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(
@@ -39,6 +43,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            //soru numarasını gösterir.
             Text(
               '${(currentQuestionIndex + 1)}',
               style: const TextStyle(
@@ -49,6 +54,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             ),
             Column(
               children: [
+                //soru metnini gösterir.
                 Text(
                   currentQuestion.text,
                   style: GoogleFonts.lato(
@@ -61,6 +67,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               ],
             ),
             const SizedBox(height: 30),
+
+            //cevap butonlarını oluşturur.
             ...currentQuestion.shuffledAnswers.map((answer) {
               return AnswerButton(
                   answerText: answer,

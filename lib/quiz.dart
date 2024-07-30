@@ -16,7 +16,7 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   List<String> _selectedAnswers = [];
 
-  //activeScreen bulunduğumuz ekrnaın hangi ekran olduğunu belitritt.
+  //activeScreen bulunduğumuz ekranın hangi ekranda aktif olduğunu gösterir.
   String activeScreen = 'start-screen';
 
 // switcScreen fonksiyonu sorular sayfasını görmemizi sağlar.
@@ -26,12 +26,14 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+// restartQuizApp fonksiyonu, start-screen dönmemizi sağlar.
   void restartQuizApp() {
     setState(() {
       activeScreen = 'start-screen';
     });
   }
 
+//chooseAnswer fonksiyonu, kullanıcının seçtiği cevabı(selectedAnswer) listeye ekler ve tüm sorular cevaplandığında result-screen'de gösterir.
   void chooseAnswer(String answer) {
     _selectedAnswers.add(answer);
 
@@ -42,6 +44,7 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+//restartQuiz fonksiyonu,cevaplanan soruları sıfırlar.
   void restartQuiz() {
     setState(() {
       _selectedAnswers = [];
@@ -50,13 +53,17 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(BuildContext context) {
+    //başlangıçta gösterilmesi gereken ekranı StartScreen olarak tanımladık.
     Widget screenWidget = StartScreen(switchScreen);
 
+// activeScreen 'question-screen' gösterir
     if (activeScreen == 'question-screen') {
       screenWidget = QuestionsScreen(
         onSelectAnswer: chooseAnswer,
       );
     }
+
+    // activeScreen 'result-screen' gösterir.
     if (activeScreen == 'result-screen') {
       screenWidget = ResultScreen(
         chosenAnswers: _selectedAnswers,
@@ -69,6 +76,7 @@ class _QuizState extends State<Quiz> {
 
     return Scaffold(
       body: Container(
+        // ekran UI için gradient tanımlandı.
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [

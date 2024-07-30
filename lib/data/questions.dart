@@ -1,10 +1,11 @@
 import 'package:quizz_app/models/quiz_questions.dart';
 
+// uygulamadaki sorular oluşturuldu.
 const questions = [
   QuizQuestions(
     'What are the main building blocks of Flutter UIs?',
     [
-      'Widgets',
+      'Widgets', // doğru cevap.
       'Components',
       'Blocks',
       'Functions',
@@ -13,7 +14,7 @@ const questions = [
   QuizQuestions(
     'How are Flutter UIs built?',
     [
-      'By combining widgets in code',
+      'By combining widgets in code', // doğru cevap.
       'By combining widgets in a visual editor',
       'By definig widgets in config files',
       'By using XCode for İOS and Android Studio for Android',
@@ -22,7 +23,7 @@ const questions = [
   QuizQuestions(
     'What\'s the purpose of a StatefulWidget?',
     [
-      'Update UI as data changes',
+      'Update UI as data changes', // doğru cevap.
       'Update data as UI changes',
       'Ignore data changes',
       'Render UI that does not depend on data',
@@ -31,7 +32,7 @@ const questions = [
   QuizQuestions(
     'Which widget should you try to use more often: StatlesWidget or StatefulWidget?',
     [
-      'StatelesWidgets',
+      'StatelesWidgets', // doğru cevap.
       'Stateful Widget',
       'Both are equally good',
       'None of the above',
@@ -43,7 +44,7 @@ const questions = [
       'Any nested StatefulWidgets are updated',
       'The closest StatefulWidget is updated',
       'The UI is updated',
-      'Rhe UI is not updated',
+      'The UI is not updated', // doğru cevap.
     ],
   ),
   QuizQuestions(
@@ -51,7 +52,7 @@ const questions = [
     [
       'by calling updateState()',
       'by calling update()',
-      'by calling setState()',
+      'by calling setState()', // doğru cevap.
       'by calling updateData()',
     ],
   ),

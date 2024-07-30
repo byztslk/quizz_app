@@ -8,9 +8,13 @@ class ResultScreen extends StatelessWidget {
     required this.chosenAnswers,
     required this.restartQuiz,
   });
+
+  //restartQuiz, Quiz'i yeniden başlatma fonksiyonu olarak tanımlandı.
   final void Function() restartQuiz;
+  // chosenAnswers kullanıcın seçtiği cevapların listesi.
   final List<String> chosenAnswers;
 
+// summaryData , kullanıcı cevapları ve doğru cevapları içeren bir liste oluşturur.
   List<Map<String, Object>> get summaryData {
     final List<Map<String, Object>> summary = [];
 
@@ -29,6 +33,7 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //toplam soru sayısını ve doğru ceavp sayısını hesaplar.
     int numTotalQuestions = questions.length;
     int numCorrectQuestions = summaryData
         .where(
@@ -55,10 +60,14 @@ class ResultScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
+
+            //cevap özetini gösterir.
             QuestionsSummary(summaryData),
             const SizedBox(
               height: 30,
             ),
+
+            //yeniden başlatma butonu.
             TextButton(
               onPressed: () {
                 restartQuiz();
